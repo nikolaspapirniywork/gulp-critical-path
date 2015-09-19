@@ -19,8 +19,9 @@
     "vow-node": "^0.3.0"
   },
   "devDependencies": {
-    "mocha": "^2.3.2",
     "chai": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "mocha": "^2.3.2",
     "vinyl": "^0.5.3"
   }
 }

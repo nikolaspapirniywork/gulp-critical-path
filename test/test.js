@@ -50,4 +50,19 @@ describe('gulp-critical-path', function () {
             })
             .end(new File({contents: bufferToStream(contents)}));
     });
+
+    it('should remove font face css', function (done) {
+        var contents = fs.readFileSync('test/data/fonts/style.css', 'utf8');
+        var expected = fs.readFileSync('test/data/fonts/expected.css', 'utf8');
+
+        criticalPath({
+            criticalClasses: '---ini'
+        })
+            .on('error', done)
+            .on('data', function (file) {
+                expect(String(file.contents)).to.equal(expected);
+                done();
+            })
+            .end(new File({contents: bufferToStream(contents)}));
+    });
 });

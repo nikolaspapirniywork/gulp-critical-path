@@ -25,6 +25,8 @@ function getCriticalPathRules(rules, newRules, criticalClass) {
 
             item['rules'] = newMediaRules;
             newRules.push(item);
+        } else if(item['type'] === 'font-face') {
+            continue;
         } else {
             newRules.push(item);
         }
