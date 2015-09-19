@@ -1,5 +1,5 @@
 {
-  "name": "gulp-gulp-critical-path",
+  "name": "gulp-critical-path",
   "version": "0.0.1",
   "description": "Extracts classes that should be inlined",
   "author": "Nick Papirniy",
