@@ -1,0 +1,26 @@
+{
+  "name": "gulp-gulp-critical-path",
+  "version": "0.0.1",
+  "description": "Extracts classes that should be inlined",
+  "author": "Nick Papirniy",
+  "dependencies": {
+    "bufferstreams": "^1.1.0",
+    "css": "^2.2.1",
+    "debug": "^2.2.0",
+    "glob": "^5.0.14",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "multi-glob": "^0.4.0",
+    "object-assign": "^4.0.1",
+    "readable-stream": "^2.0.2",
+    "simple-bufferstream": "^1.0.0",
+    "tryit": "^1.0.1",
+    "vow": "^0.4.9",
+    "vow-node": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.2",
+    "chai": "^3.2.0",
+    "vinyl": "^0.5.3"
+  }
+}

@@ -1,0 +1,9 @@
+@media (min-width: 150px) {
+    .b-header---critical {
+        width: 100px;
+    }
+
+    .b-header {
+        color: white;
+    }
+}
