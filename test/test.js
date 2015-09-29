@@ -38,6 +38,18 @@ describe('gulp-critical-path', function () {
         }, done);
     });
 
+    it('should leave all elements selector', function (done) {
+        runTest({
+            folder: 'star'
+        }, done);
+    });
+
+    it('should leave tags', function (done) {
+        runTest({
+            folder: 'tagSelector'
+        }, done);
+    });
+
     function runTest(options, done) {
         var contents = fs.readFileSync('test/data/' + options.folder + '/given.css', 'utf8');
         var expected = fs.readFileSync('test/data/' + options.folder + '/expected.css', 'utf8');

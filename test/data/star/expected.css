@@ -1,0 +1,13 @@
+@media (min-width: 150px) {
+    * {
+        color: red;
+    }
+
+    *:before {
+        width: 100%;
+    }
+
+    *:after {
+        height: 100%;
+    }
+}

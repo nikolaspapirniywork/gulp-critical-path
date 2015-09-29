@@ -41,6 +41,11 @@ function replaceClassIfCriticalPath(item, newRules, criticalClass) {
     for (var j = 0; j < selectors.length; j++) {
         var canonizedSelectors = selectors[j].split('.');
 
+        if(isTag(canonizedSelectors)) {
+            newRules.push(item);
+            continue;
+        }
+
         for (var k = 0; k < canonizedSelectors.length; k++) {
             var canonizedSelector = canonizedSelectors[k];
             if (canonizedSelector === '')
@@ -55,8 +60,13 @@ function replaceClassIfCriticalPath(item, newRules, criticalClass) {
     }
 }
 
+function isTag(canonizedSelectors) {
+    return canonizedSelectors.length === 1;
+}
+
 function isCritical(className, criticalClass) {
-    return className.indexOf(criticalClass, 0) !== -1;
+    var hasCriticalIdentifier = className.indexOf(criticalClass, 0) !== -1;
+    return hasCriticalIdentifier;
 }
 
 module.exports.removeUnusedClassesFromCss = replaceCriticalPathClasses;

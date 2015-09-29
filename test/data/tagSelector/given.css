@@ -1,0 +1,13 @@
+@media (min-width: 150px) {
+    h1 {
+        color: red;
+    }
+
+    .class1 {
+        width: 100%;
+    }
+}
+
+.class2---ini {
+    height: 100%;
+}

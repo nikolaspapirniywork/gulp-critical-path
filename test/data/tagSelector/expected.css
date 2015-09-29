@@ -1,0 +1,9 @@
+@media (min-width: 150px) {
+    h1 {
+        color: red;
+    }
+}
+
+.class2 {
+    height: 100%;
+}
