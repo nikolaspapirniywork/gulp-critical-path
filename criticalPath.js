@@ -27,6 +27,8 @@ function getCriticalPathRules(rules, newRules, criticalClass) {
             newRules.push(item);
         } else if(item['type'] === 'font-face') {
             continue;
+        } else if(item['type'] === 'charset') {
+            continue;
         } else {
             newRules.push(item);
         }

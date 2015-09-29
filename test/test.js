@@ -7,56 +7,48 @@ var expect = require('chai').expect;
 
 describe('gulp-critical-path', function () {
     it('should exctract critical path classes', function (done) {
-        var contents = fs.readFileSync('test/data/css/style.css', 'utf8');
-        var expected = fs.readFileSync('test/data/css/expected.css', 'utf8');
-
-        criticalPath({
+        runTest({
+            folder: 'css',
             criticalClasses: '---critical'
-        })
-            .on('error', done)
-            .on('data', function (file) {
-                expect(String(file.contents)).to.equal(expected);
-                done();
-            })
-            .end(new File({contents: bufferToStream(contents)}));
+        }, done);
     });
 
     it('should extract critical path classes with media queries', function (done) {
-        var contents = fs.readFileSync('test/data/media/style.css', 'utf8');
-        var expected = fs.readFileSync('test/data/media/expected.css', 'utf8');
-
-        criticalPath({
+        runTest({
+            folder: 'media',
             criticalClasses: '---critical'
-        })
-            .on('error', done)
-            .on('data', function (file) {
-                expect(String(file.contents)).to.equal(expected);
-                done();
-            })
-            .end(new File({contents: bufferToStream(contents)}));
+        }, done);
     });
 
     it('should extract critical path classes with different critical class name', function (done) {
-        var contents = fs.readFileSync('test/data/differentCriticalName/style.css', 'utf8');
-        var expected = fs.readFileSync('test/data/differentCriticalName/expected.css', 'utf8');
-
-        criticalPath({
-            criticalClasses: '---ini'
-        })
-            .on('error', done)
-            .on('data', function (file) {
-                expect(String(file.contents)).to.equal(expected);
-                done();
-            })
-            .end(new File({contents: bufferToStream(contents)}));
+        runTest({
+            folder: 'differentCriticalName'
+        }, done);
     });
 
     it('should remove font face css', function (done) {
-        var contents = fs.readFileSync('test/data/fonts/style.css', 'utf8');
-        var expected = fs.readFileSync('test/data/fonts/expected.css', 'utf8');
+        runTest({
+            folder: 'fonts'
+        }, done);
+    });
+
+    it('should remove charset from css', function (done) {
+        runTest({
+            folder: 'charset'
+        }, done);
+    });
+
+    function runTest(options, done) {
+        var contents = fs.readFileSync('test/data/' + options.folder + '/given.css', 'utf8');
+        var expected = fs.readFileSync('test/data/' + options.folder + '/expected.css', 'utf8');
+
+        var criticalPathCss = '---ini';
+
+        if (options.criticalClasses)
+            criticalPathCss = options.criticalClasses;
 
         criticalPath({
-            criticalClasses: '---ini'
+            criticalClasses: criticalPathCss
         })
             .on('error', done)
             .on('data', function (file) {
@@ -64,5 +56,5 @@ describe('gulp-critical-path', function () {
                 done();
             })
             .end(new File({contents: bufferToStream(contents)}));
-    });
+    }
 });
